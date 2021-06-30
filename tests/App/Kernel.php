@@ -15,7 +15,7 @@ class Kernel extends BaseKernel
 
     public function registerBundles(): iterable
     {
-        $contents = require __DIR__ . '/Resource/config/bundles.php';
+        $contents = require __DIR__ . '/Resources/config/bundles.php';
         foreach ($contents as $class => $envs) {
             if ($envs[$this->environment] ?? $envs['all'] ?? false) {
                 yield new $class();
@@ -25,16 +25,16 @@ class Kernel extends BaseKernel
 
     protected function configureContainer(ContainerConfigurator $container): void
     {
-        $container->import('Resource/config/{packages}/*.yaml');
-        $container->import('Resource/config/{packages}/' . $this->environment . '/*.yaml');
-        $container->import('Resource/config/{services}.yaml');
-        $container->import('Resource/config/{services}_' . $this->environment . '.yaml');
+        $container->import('Resources/config/{packages}/*.yaml');
+        $container->import('Resources/config/{packages}/' . $this->environment . '/*.yaml');
+        $container->import('Resources/config/{services}.yaml');
+        $container->import('Resources/config/{services}_' . $this->environment . '.yaml');
     }
 
     protected function configureRoutes(RoutingConfigurator $routes): void
     {
-        $routes->import('Resource/config/{routes}/' . $this->environment . '/*.yaml');
-        $routes->import('Resource/config/{routes}/*.yaml');
-        $routes->import('Resource/config/{routes}.yaml');
+        $routes->import('Resources/config/{routes}/' . $this->environment . '/*.yaml');
+        $routes->import('Resources/config/{routes}/*.yaml');
+        $routes->import('Resources/config/{routes}.yaml');
     }
 }

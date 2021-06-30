@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  jin2chen\ApiBundle\:
+    resource: '../../../src/*'
+    exclude: '../../../src/{DependencyInjection,Resources,Jin2chenApiBundle.php}'

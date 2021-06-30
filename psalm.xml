@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <psalm
-    errorLevel="2"
+    errorLevel="1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config"
@@ -8,4 +8,7 @@
     <projectFiles>
         <directory name="src" />
     </projectFiles>
+    <stubs>
+        <file name=".stub/resource.phpstub" />
+    </stubs>
 </psalm>

@@ -1,0 +1,30 @@
+<?php
+
+namespace League\Fractal {
+
+    abstract class TransformerAbstract
+    {
+        protected $currentScope = null;
+    }
+}
+
+namespace League\Fractal\Resource {
+
+    use League\Fractal\TransformerAbstract;
+
+    abstract class ResourceAbstract implements ResourceInterface
+    {
+        /**
+         * Item constructor.
+         *
+         * @param mixed $data
+         * @param callable|TransformerAbstract|string|null $transformer
+         * @param string|null $resourceKey
+         */
+        public function __construct($data = null, $transformer = null, $resourceKey = null)
+        {
+        }
+    }
+}
+
+
