@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit bootstrap="vendor/autoload.php"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         cacheResultFile=".phpunit.cache/test-results"
          colors="true"
-         verbose="true"
+         executionOrder="depends,defects"
          failOnRisky="true"
          failOnWarning="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         stopOnFailure="false"
-         executionOrder="random"
-         resolveDependencies="true">
+         verbose="true">
     <php>
         <ini name="error_reporting" value="-1"/>
+        <server name="APP_ENV" value="test" force="true"/>
+        <server name="APP_SECRET" value="eQ03CJtDNb5U8FaNKVeJNNbw9JHcLAShag9CkWp9PAQc" force="true"/>
+        <server name="KERNEL_CLASS" value="jin2chen\ApiBundle\Tests\App\Kernel"/>
     </php>
 
     <testsuites>
-        <testsuite name="Yii _____ tests">
-            <directory>./tests</directory>
+        <testsuite name="default">
+            <directory>tests</directory>
+            <exclude>tests/App/*</exclude>
         </testsuite>
     </testsuites>
 
     <coverage>
         <include>
-            <directory>./src</directory>
+            <directory suffix=".php">src</directory>
         </include>
     </coverage>
 </phpunit>

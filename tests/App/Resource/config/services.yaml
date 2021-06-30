@@ -1,0 +1,9 @@
+parameters:
+    app.secret: '%env(APP_SECRET)%'
+    locale: 'en'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
