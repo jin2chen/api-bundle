@@ -7,3 +7,16 @@ services:
         autowire: true
         autoconfigure: true
         public: false
+
+    jin2chen\ApiBundle\Tests\App\:
+        resource: '../../'
+        exclude:
+            - '../../Kernel.php'
+            - '../../Model/'
+            - '../../Resources/'
+    jin2chen\ApiBundle\Tests\App\Transformer\:
+        resource: '../../Transformer/'
+        public: true
+    jin2chen\ApiBundle\Tests\App\Controller\:
+        resource: '../../Controller/'
+        tags: [ 'controller.service_arguments' ]

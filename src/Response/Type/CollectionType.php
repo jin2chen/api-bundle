@@ -9,7 +9,7 @@ class CollectionType extends AbstractType
 {
     private iterable $resource;
 
-    public function __construct(iterable $resource, string $transformer, array $meta = [], string $key = 'data')
+    public function __construct(iterable $resource, string $transformer, array $meta = [], ?string $key = null)
     {
         $this->resource    = $resource;
         $this->transformer = $transformer;

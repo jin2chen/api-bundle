@@ -7,6 +7,7 @@ namespace jin2chen\ApiBundle\Tests\EventSubscriber;
 use jin2chen\ApiBundle\EventSubscriber\RequestIdSubscriber;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 use function array_keys;
@@ -16,10 +17,7 @@ class RequestIdSubscriberTest extends WebTestCase
 {
     private string $requestIdParamName = 'jin2chen.api_bundle.request.request_id_header';
 
-    /**
-     * @test
-     */
-    public function getSubscribedEvents()
+    public function testGetSubscribedEvents()
     {
         $this->assertEquals(
             [KernelEvents::REQUEST, KernelEvents::RESPONSE, KernelEvents::TERMINATE],
@@ -27,32 +25,25 @@ class RequestIdSubscriberTest extends WebTestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function onRequest()
+    public function testOnRequest()
     {
-
         $client = static::createClient();
-        $client->request('post', '/json');
+        $client->request(Request::METHOD_POST, '/json');
         $request = $client->getRequest();
 
         $requestIdHeader = static::getContainer()->getParameter($this->requestIdParamName);
         $this->assertTrue(Uuid::isValid($request->headers->get($requestIdHeader)));
 
         $requestId = Uuid::uuid4();
-        $client->request('post', '/json', [], [], [sprintf('HTTP_%s', $requestIdHeader) => $requestId->toString()]);
+        $client->request(Request::METHOD_POST, '/json', [], [], [sprintf('HTTP_%s', $requestIdHeader) => $requestId->toString()]);
         $request = $client->getRequest();
         $this->assertEquals($requestId->toString(), $request->headers->get($requestIdHeader));
     }
 
-    /**
-     * @test
-     */
-    public function onResponse()
+    public function testOnResponse()
     {
         $client = static::createClient();
-        $client->request('post', '/json');
+        $client->request(Request::METHOD_POST, '/json');
         $request = $client->getRequest();
         $response = $client->getResponse();
 

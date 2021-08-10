@@ -1,0 +1,15 @@
+json_response:
+    path: /json
+    controller: jin2chen\ApiBundle\Tests\App\Controller\SiteController::toJson
+exception_response:
+    path: /exception
+    controller: jin2chen\ApiBundle\Tests\App\Controller\SiteController::exception
+http_exception_response:
+    path: /http-exception
+    controller: jin2chen\ApiBundle\Tests\App\Controller\SiteController::httpException
+book_view:
+    path: /books/{id}
+    controller: jin2chen\ApiBundle\Tests\App\Controller\BookController::view
+book_list:
+    path: /books
+    controller: jin2chen\ApiBundle\Tests\App\Controller\BookController::index

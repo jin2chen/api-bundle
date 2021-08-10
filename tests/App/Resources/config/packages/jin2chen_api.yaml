@@ -1,3 +1,6 @@
 jin2chen_api:
     request:
         request_id_header: 'X-Request-Id'
+    response:
+        exception_converters:
+            Symfony\Component\HttpKernel\Exception\HttpException: jin2chen\ApiBundle\Response\ExceptionConverter\HttpExceptionConverter

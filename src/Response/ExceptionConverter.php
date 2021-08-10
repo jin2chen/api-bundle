@@ -42,7 +42,8 @@ final class ExceptionConverter implements ExceptionConverterInterface
      */
     private function map(Throwable $e): ExceptionConverterInterface
     {
-        $classNames = class_parents($e);
+        /** @var class-string[] $classNames */
+        $classNames = array_values(class_parents($e, false));
         array_unshift($classNames, get_class($e));
         $class = GenericConverter::class;
         foreach ($classNames as $className) {

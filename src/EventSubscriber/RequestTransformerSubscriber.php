@@ -26,7 +26,12 @@ class RequestTransformerSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function onKernelRequest(RequestEvent $event): void
+    /**
+     * @Callback
+     * @see getSubscribedEvents()
+     * @param RequestEvent $event
+     */
+    public function onRequest(RequestEvent $event): void
     {
         $request = $event->getRequest();
 
