@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace jin2chen\ApiBundle\EventSubscriber;
 
 use jin2chen\ApiBundle\Response\ExceptionConverter;
@@ -28,6 +30,7 @@ class ConvertExceptionToJSONResponseSubscriber implements EventSubscriberInterfa
 
     /**
      * @Callback
+     *
      * @param ExceptionEvent $event
      */
     public function onException(ExceptionEvent $event): void

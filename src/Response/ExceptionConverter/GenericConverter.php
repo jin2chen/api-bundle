@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace jin2chen\ApiBundle\Response\ExceptionConverter;
 
 use jin2chen\ApiBundle\Response\ExceptionConverterInterface;

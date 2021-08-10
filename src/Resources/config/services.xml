@@ -15,6 +15,9 @@
             <argument type="string">%jin2chen.api_bundle.request.request_id_header%</argument>
         </service>
 
+        <service id="jin2chen\ApiBundle\EventSubscriber\RequestTransformerSubscriber">
+        </service>
+
         <service id="jin2chen\ApiBundle\EventSubscriber\ConvertExceptionToJSONResponseSubscriber">
         </service>
 

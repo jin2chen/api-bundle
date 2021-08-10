@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace jin2chen\ApiBundle\Controller;
 
 use jin2chen\ApiBundle\Response\ResponseConverter;

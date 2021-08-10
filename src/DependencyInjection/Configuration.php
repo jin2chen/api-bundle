@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace jin2chen\ApiBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -16,6 +18,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder('jin2chen_api');
         $rootNode = $treeBuilder->getRootNode();
 
+        // @formatter:off
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
@@ -27,6 +30,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end();
+        // @formatter:on
 
         return $treeBuilder;
     }

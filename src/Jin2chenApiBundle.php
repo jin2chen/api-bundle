@@ -8,5 +8,4 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class Jin2chenApiBundle extends Bundle
 {
-
 }
