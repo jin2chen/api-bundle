@@ -32,7 +32,6 @@ class RequestIdSubscriber implements EventSubscriberInterface, ProcessorInterfac
 
     public function __invoke(array $record): array
     {
-        /** @var array{extra: array} $record */
         $record['extra']['request_id'] = $this->data['request_id'];
 
         return $record;
