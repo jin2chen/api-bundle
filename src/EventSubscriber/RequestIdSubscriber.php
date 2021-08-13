@@ -40,9 +40,9 @@ class RequestIdSubscriber implements EventSubscriberInterface, ProcessorInterfac
     public static function getSubscribedEvents(): array
     {
         return [
-            KernelEvents::REQUEST => ['onRequest', 1024],
-            KernelEvents::RESPONSE => 'onResponse',
-            KernelEvents::TERMINATE => 'onTerminate',
+            KernelEvents::REQUEST => ['onKernelRequest', 1024],
+            KernelEvents::RESPONSE => 'onKernelResponse',
+            KernelEvents::TERMINATE => 'onKernelTerminate',
         ];
     }
 
@@ -50,7 +50,7 @@ class RequestIdSubscriber implements EventSubscriberInterface, ProcessorInterfac
      * @Callback
      * @see getSubscribedEvents()
      */
-    public function onRequest(RequestEvent $event): void
+    public function onKernelRequest(RequestEvent $event): void
     {
         $request = $event->getRequest();
 
@@ -68,7 +68,7 @@ class RequestIdSubscriber implements EventSubscriberInterface, ProcessorInterfac
      * @see getSubscribedEvents()
      * @param ResponseEvent $event
      */
-    public function onResponse(ResponseEvent $event): void
+    public function onKernelResponse(ResponseEvent $event): void
     {
         $event->getResponse()->headers->set($this->header, $this->data['request_id']);
     }
@@ -77,7 +77,7 @@ class RequestIdSubscriber implements EventSubscriberInterface, ProcessorInterfac
      * @Callback
      * @see getSubscribedEvents()
      */
-    public function onTerminate(): void
+    public function onKernelTerminate(): void
     {
         $this->reset();
     }

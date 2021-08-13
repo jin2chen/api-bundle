@@ -22,7 +22,7 @@ class RequestTransformerSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            KernelEvents::REQUEST => ['onRequest', 1023],
+            KernelEvents::REQUEST => ['onKernelRequest', 1023],
         ];
     }
 
@@ -31,7 +31,7 @@ class RequestTransformerSubscriber implements EventSubscriberInterface
      * @see getSubscribedEvents()
      * @param RequestEvent $event
      */
-    public function onRequest(RequestEvent $event): void
+    public function onKernelRequest(RequestEvent $event): void
     {
         $request = $event->getRequest();
 
