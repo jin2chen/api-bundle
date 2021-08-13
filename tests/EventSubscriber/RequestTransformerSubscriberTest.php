@@ -35,7 +35,7 @@ class RequestTransformerSubscriberTest extends WebTestCase
     {
         $response = $this->sendRequest('{$body}');
 
-        $this->assertSame('{"message":"Syntax error"}', $response->getContent());
+        $this->assertSame('{"status":400,"code":0,"message":"Syntax error"}', $response->getContent());
         $this->assertSame(Response::HTTP_BAD_REQUEST, $response->getStatusCode());
     }
 

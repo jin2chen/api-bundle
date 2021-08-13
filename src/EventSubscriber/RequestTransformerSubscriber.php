@@ -6,10 +6,9 @@ namespace jin2chen\ApiBundle\EventSubscriber;
 
 use JsonException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 use function is_array;
@@ -47,7 +46,7 @@ class RequestTransformerSubscriber implements EventSubscriberInterface
                 $request->request->replace($data);
             }
         } catch (JsonException $exception) {
-            $event->setResponse(new JsonResponse(['message' => $exception->getMessage()], Response::HTTP_BAD_REQUEST));
+            throw new BadRequestHttpException($exception->getMessage());
         }
     }
 
