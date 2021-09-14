@@ -16,7 +16,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.0",
-        "psr/log": "^1.1",
+        "psr/log": "^2.0",
         "ramsey/uuid": "^4.1",
         "samj/fractal-bundle": "^4.0",
         "symfony/framework-bundle": "^5.0",
